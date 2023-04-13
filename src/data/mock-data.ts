@@ -1,17 +1,5 @@
-export interface Event {
-    id: string;
-    title: string;
-    description: string;
-    location: string;
-    date: string;
-    image: string;
-    isFeatured: boolean;
-}
-
-interface DateFilter {
-    year: number;
-    month: number;
-}
+import { Event } from '@/global/types';
+import { DateFilter } from '@/global/types';
 
 const MOCK_EVENTS: Event[] = [
     {

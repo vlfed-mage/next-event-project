@@ -1,4 +1,4 @@
-import { Event } from '@/data/mock-data';
+import { Event } from '@/global/types';
 import EventItem from '@/components/events/event-item';
 
 import classes from '../../styles/event-list.module.css';
