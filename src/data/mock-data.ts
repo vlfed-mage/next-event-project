@@ -53,6 +53,6 @@ export function getFilteredEvents(dateFilter: DateFilter): Event[] {
     return filteredEvents;
 }
 
-export function getEventById(id: string): Event | undefined {
+export function getEventById(id: string | string[] | undefined): Event | undefined {
     return MOCK_EVENTS.find(event => event.id === id);
 }
