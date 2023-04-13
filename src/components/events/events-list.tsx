@@ -1,7 +1,7 @@
 import { Event } from '@/global/types';
 import EventItem from '@/components/events/event-item';
 
-import classes from '../../styles/event-list.module.css';
+import classes from '@/styles/event-list.module.css';
 
 interface EventsListProps {
     events: Event[];
