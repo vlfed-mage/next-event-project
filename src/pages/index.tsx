@@ -1,5 +1,8 @@
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/home.module.css';
+
+import { getAllEvents } from '@/data/mock-data';
+import EventsList from '@/components/events/events-list';
 
 export default function Home() {
     return (
@@ -12,6 +15,7 @@ export default function Home() {
             </Head>
             <main className={styles.main}>
                 <h1>Home page</h1>
+                <EventsList events={getAllEvents()} />
             </main>
         </>
     );
