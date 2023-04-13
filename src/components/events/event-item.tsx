@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { Event } from '@/global/types';
+
 import itemClasses from '../../styles/event-item.module.css';
 import btnClasses from '../../styles/btn.module.css';
-import { Event } from '@/data/mock-data';
+
+import DateIcon from '@/components/icons/date-icon';
+import AddressIcon from '@/components/icons/address-icon';
+import ArrowRightIcon from '@/components/icons/arrow-right-icon';
 
 const EventItem = ({ id, title, location, date, image }: Event) => {
     const formedDate = new Date(date).toLocaleDateString('en-US', {
@@ -19,9 +24,11 @@ const EventItem = ({ id, title, location, date, image }: Event) => {
                 <div>
                     <h2>{title}</h2>
                     <div className={itemClasses.date}>
+                        <DateIcon />
                         <time>{formedDate}</time>
                     </div>
                     <div className={itemClasses.address}>
+                        <AddressIcon />
                         <address>{location.replace(', ', '\n')}</address>
                     </div>
                 </div>
@@ -32,7 +39,10 @@ const EventItem = ({ id, title, location, date, image }: Event) => {
                             pathname: '/events/[eventId]',
                             query: { eventId: id },
                         }}>
-                        Explore Event
+                        <span>Explore Event</span>
+                        <span className={itemClasses.icon}>
+                            <ArrowRightIcon />
+                        </span>
                     </Link>
                 </div>
             </div>
