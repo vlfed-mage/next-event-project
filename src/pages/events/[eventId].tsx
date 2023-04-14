@@ -7,13 +7,18 @@ import { getEventById } from '@/data/mock-data';
 import EventSummary from '@/components/event-detail/event-summary';
 import EventLogistics from '@/components/event-detail/event-logistics';
 import EventContent from '@/components/event-detail/event-content';
+import ErrorAlert from '@/components/error-alert/error-alert';
 
 export default function EventDetailsPage() {
     const router = useRouter();
     const event: Event | undefined = getEventById(router.query.eventId);
 
     if (!event) {
-        return <p>Event not found!</p>;
+        return (
+            <ErrorAlert>
+                <p>Event not found!</p>
+            </ErrorAlert>
+        );
     }
 
     return (
