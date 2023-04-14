@@ -10,7 +10,7 @@ import LogisticsItem from './logistics-item';
 
 type EventLogisticsProps = Pick<Event, 'title' | 'date' | 'image' | 'location'>;
 
-function EventLogistics({ date, location, image, title }: EventLogisticsProps) {
+const EventLogistics = ({ date, location, image, title }: EventLogisticsProps) => {
     return (
         <section className={classes.logistics}>
             <div className={classes.image}>
@@ -26,6 +26,6 @@ function EventLogistics({ date, location, image, title }: EventLogisticsProps) {
             </ul>
         </section>
     );
-}
+};
 
 export default EventLogistics;

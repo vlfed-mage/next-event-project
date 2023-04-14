@@ -1,6 +1,6 @@
 // heroicons.com
 
-function ArrowRightIcon() {
+const ArrowRightIcon = () => {
     return (
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'>
             <path
@@ -10,6 +10,6 @@ function ArrowRightIcon() {
             />
         </svg>
     );
-}
+};
 
 export default ArrowRightIcon;

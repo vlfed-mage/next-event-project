@@ -7,7 +7,7 @@ interface LogisticsItemProps extends ChildrenProps {
     icon: ElementType;
 }
 
-function LogisticsItem({ icon: Icon, children }: LogisticsItemProps) {
+const LogisticsItem = ({ icon: Icon, children }: LogisticsItemProps) => {
     return (
         <li className={classes.item}>
             <span className={classes.icon}>
@@ -16,6 +16,6 @@ function LogisticsItem({ icon: Icon, children }: LogisticsItemProps) {
             <span className={classes.content}>{children}</span>
         </li>
     );
-}
+};
 
 export default LogisticsItem;
