@@ -6,6 +6,8 @@ import { DateFilter } from '@/global/types';
 import { getFilteredEvents } from '@/data/mock-data';
 import EventsList from '@/components/events/events-list';
 import ResultsTitle from '@/components/results-title/results-title';
+import Button from '@/components/ui/button';
+import ErrorAlert from '@/components/error-alert/error-alert';
 
 export default function FilteredEventsPage() {
     const router = useRouter();
@@ -22,13 +24,27 @@ export default function FilteredEventsPage() {
     const filteredEvents = dateFilter ? getFilteredEvents(dateFilter) : [];
 
     if (!filteredEvents || filteredEvents.length === 0) {
-        return <p>No events found for chosen filter!</p>;
+        return (
+            <>
+                <ErrorAlert>
+                    <p>No events found for chosen filter!</p>
+                </ErrorAlert>
+                <Button href='/events'>Show all events</Button>
+            </>
+        );
     }
 
     if (dateFilter) {
         const { year, month } = dateFilter;
         if (year > 2030 || year < 2021 || month < 1 || month > 12) {
-            return <p>Invalid filter. Please adjust your values!</p>;
+            return (
+                <>
+                    <ErrorAlert>
+                        <p>Invalid filter. Please adjust your values!</p>
+                    </ErrorAlert>
+                    <Button href='/events'>Show all events</Button>
+                </>
+            );
         }
         return (
             <>
