@@ -3,9 +3,21 @@ import classes from '@/styles/events-search.module.css';
 
 import Button from '@/components/ui/button';
 
-const EventsSearch = () => {
+interface EventsSearchProps {
+    onSearch: (selectedYear: string | undefined, selectedMonth: string | undefined) => void;
+}
+
+const EventsSearch = ({ onSearch }: EventsSearchProps) => {
+    const yearInputRef = useRef<HTMLSelectElement | null>(null);
+    const monthInputRef = useRef<HTMLSelectElement | null>(null);
+
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const selectedYear = yearInputRef.current?.value;
+        const selectedMonth = monthInputRef.current?.value;
+
+        onSearch(selectedYear, selectedMonth);
     };
 
     return (
@@ -13,14 +25,14 @@ const EventsSearch = () => {
             <div className={classes.controls}>
                 <div className={classes.control}>
                     <label htmlFor='year'>Year</label>
-                    <select id='year'>
+                    <select id='year' ref={yearInputRef}>
                         <option value='2021'>2021</option>
                         <option value='2022'>2022</option>
                     </select>
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='month'>Month</label>
-                    <select id='month'>
+                    <select id='month' ref={monthInputRef}>
                         <option value='1'>January</option>
                         <option value='2'>February</option>
                         <option value='3'>March</option>
