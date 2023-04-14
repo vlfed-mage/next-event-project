@@ -7,7 +7,9 @@ const Layout = ({ children }: ChildrenProps) => {
     return (
         <>
             <MainHeader />
-            <main className={styles.main}>{children}</main>
+            <main className={styles.main} id='main'>
+                {children}
+            </main>
         </>
     );
 };
