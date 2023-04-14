@@ -1,15 +1,13 @@
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { Event } from '@/global/types';
-
 import itemClasses from '@/styles/event-item.module.css';
-import btnClasses from '@/styles/btn.module.css';
+import { formAddressText, formDate } from '@/helpers';
 
 import DateIcon from '@/components/icons/date-icon';
 import AddressIcon from '@/components/icons/address-icon';
 import ArrowRightIcon from '@/components/icons/arrow-right-icon';
-import { formAddressText, formDate } from '@/helpers';
+import Button from '@/components/ui/button';
 
 const EventItem = ({ id, title, location, date, image }: Event) => {
     return (
@@ -28,8 +26,7 @@ const EventItem = ({ id, title, location, date, image }: Event) => {
                     </div>
                 </div>
                 <div className={itemClasses.actions}>
-                    <Link
-                        className={btnClasses.btn}
+                    <Button
                         href={{
                             pathname: '/events/[eventId]',
                             query: { eventId: id },
@@ -38,7 +35,7 @@ const EventItem = ({ id, title, location, date, image }: Event) => {
                         <span className={itemClasses.icon}>
                             <ArrowRightIcon />
                         </span>
-                    </Link>
+                    </Button>
                 </div>
             </div>
         </li>

@@ -1,6 +1,6 @@
-export const formDate = (date: string) =>
+export const formDate = (date: string | Date, day = true) =>
     new Date(date).toLocaleDateString('en-US', {
-        day: 'numeric',
+        day: day ? 'numeric' : undefined,
         month: 'long',
         year: 'numeric',
     });

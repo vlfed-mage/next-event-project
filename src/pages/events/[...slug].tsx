@@ -5,6 +5,7 @@ import { DateFilter } from '@/global/types';
 
 import { getFilteredEvents } from '@/data/mock-data';
 import EventsList from '@/components/events/events-list';
+import ResultsTitle from '@/components/results-title/results-title';
 
 export default function FilteredEventsPage() {
     const router = useRouter();
@@ -17,12 +18,6 @@ export default function FilteredEventsPage() {
             month: +month,
         };
     }
-    if (dateFilter) {
-        const { year, month } = dateFilter;
-        if (year > 2030 || year < 2021 || month < 1 || month > 12) {
-            return <p>Invalid filter. Please adjust your values!</p>;
-        }
-    }
 
     const filteredEvents = dateFilter ? getFilteredEvents(dateFilter) : [];
 
@@ -30,15 +25,22 @@ export default function FilteredEventsPage() {
         return <p>No events found for chosen filter!</p>;
     }
 
-    return (
-        <>
-            <Head>
-                <title>Filtered Events App</title>
-                <meta name='description' content='Filtered events page' />
-                <meta name='viewport' content='width=device-width, initial-scale=1' />
-                <link rel='icon' href='/favicon.ico' />
-            </Head>
-            <EventsList events={filteredEvents} />
-        </>
-    );
+    if (dateFilter) {
+        const { year, month } = dateFilter;
+        if (year > 2030 || year < 2021 || month < 1 || month > 12) {
+            return <p>Invalid filter. Please adjust your values!</p>;
+        }
+        return (
+            <>
+                <Head>
+                    <title>Filtered Events App</title>
+                    <meta name='description' content='Filtered events page' />
+                    <meta name='viewport' content='width=device-width, initial-scale=1' />
+                    <link rel='icon' href='/favicon.ico' />
+                </Head>
+                <ResultsTitle date={new Date(year, month - 1)} />
+                <EventsList events={filteredEvents} />
+            </>
+        );
+    }
 }

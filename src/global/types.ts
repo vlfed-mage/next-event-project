@@ -9,7 +9,7 @@ export interface Event {
     title: string;
     description: string;
     location: string;
-    date: string;
+    date: string | Date;
     image: string;
     isFeatured: boolean;
 }
